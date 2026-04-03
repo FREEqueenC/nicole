@@ -34,27 +34,40 @@ export function SiteFooter() {
         </div>
 
         {/* Social links */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center justify-center gap-4">
           <a
-            href="https://twitter.com"
+            href="https://anwfoundations.com"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Twitter / X"
-            className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground hover:text-primary transition-colors tracking-wider uppercase"
+            className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground hover:text-primary transition-colors tracking-wider uppercase"
           >
-            <Twitter className="w-3.5 h-3.5" />
-            Twitter / X
+            ANW_FOUNDATIONS
           </a>
           <span className="text-border">|</span>
           <a
-            href="https://farcaster.xyz"
+            href="https://disclosure-project.org"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Farcaster"
-            className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground hover:text-primary transition-colors tracking-wider uppercase"
+            className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground hover:text-primary transition-colors tracking-wider uppercase"
           >
-            <ExternalLink className="w-3.5 h-3.5" />
-            Farcaster
+            DISCLOSURE_PROJECT
+          </a>
+          <span className="hidden md:inline text-border">|</span>
+          <a
+            href="/privacy"
+            className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground hover:text-primary transition-colors tracking-wider uppercase"
+          >
+            PRIVACY_PROTOCOL
+          </a>
+          <span className="text-border">|</span>
+          <a
+            href="https://twitter.com/Ashleigh11911"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground hover:text-primary transition-colors tracking-wider uppercase"
+          >
+            <Twitter className="w-3 h-3" />
+            X_INTEL
           </a>
         </div>
       </div>

@@ -25,10 +25,54 @@ export default function NicolePage() {
       )}
 
       {activeView === "MARKET_DECRYPTION" && (
-        <section className="min-h-screen pt-32 px-4 max-w-6xl mx-auto animate-glitch">
-          <h2 className="text-4xl font-bold font-mono neon-text mb-8 tracking-widest uppercase text-center">
-            // DOSSIER: MARKET_DECRYPTION
-          </h2>
+        <section className="min-h-screen pt-32 pb-24 px-4 max-w-6xl mx-auto animate-glitch">
+          <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-8">
+            <div className="text-center md:text-left">
+              <h2 className="text-4xl font-bold font-mono neon-text tracking-widest uppercase mb-4">
+                // DOSSIER: MARKET_DECRYPTION
+              </h2>
+              <p className="text-muted-foreground max-w-xl">
+                Analyzing the atomic-level resonance of capital flow. We filter Archonic manipulation to find the frequency of abundance.
+              </p>
+            </div>
+            <div className="terminal-border p-4 bg-card font-mono text-[10px] text-primary">
+               [ STATUS: SCANNING_S-ORME_STATE ] <br/>
+               [ CLARITY: 97.3% ] <br/>
+               [ NOISE_FLOOR: -114dB ]
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div className="terminal-border-violet bg-card p-8">
+               <h3 className="text-foreground font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                 <span className="w-2 h-2 bg-violet-500 rounded-full" />
+                 Module A: Advanced Materials Alpha
+               </h3>
+               <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                 By monitoring the **Orbitally Rearranged Monoatomic Elements (ORMEs)** state transitions, N.I.C.O.L.E. identifies superconducting pathways in market liquidity. Just as T-Metal anomalies create Meissner Fields, high-clarity signals create zones of wealth protection.
+               </p>
+               <ul className="space-y-2 text-[10px] font-mono text-violet-400/80">
+                 <li>{">"} Detecting Cooper Pairing in d-orbitals...</li>
+                 <li>{">"} Meissner Field generation active.</li>
+                 <li>{">"} Quantum Flux: 5 x 10^8 cycles/sec.</li>
+               </ul>
+            </div>
+            <div className="terminal-border bg-card p-8">
+               <h3 className="text-foreground font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                 <span className="w-2 h-2 bg-primary rounded-full" />
+                 Signal Interruption Mechanics
+               </h3>
+               <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                 Utilizing the **Gate Control System** of sentiment analysis. We detect where market "pain" signals (volatility) are artificially intensified to induce hypoxic panic, allowing us to find the counter-resonance of growth.
+               </p>
+               <ul className="space-y-2 text-[10px] font-mono text-primary/80">
+                 <li>{">"} Vagus Nerve stimulation detected in macro-sentiment.</li>
+                 <li>{">"} Breaking Manhattan Project legacy extraction loops.</li>
+                 <li>{">"} Resonant Frequency: 528Hz (Abundance).</li>
+               </ul>
+            </div>
+          </div>
+          
           <WhySection />
           <div className="mt-12">
             <PricingSection />
@@ -37,29 +81,81 @@ export default function NicolePage() {
       )}
 
       {activeView === "RESEARCH_VAULT" && (
-        <section className="min-h-screen pt-32 px-4 max-w-6xl mx-auto animate-glitch">
-          <h2 className="text-4xl font-bold font-mono violet-text mb-8 tracking-widest uppercase text-center">
-            // DOSSIER: RESEARCH_VAULT
-          </h2>
-          <FeaturesSection />
-          <div className="mt-12 text-center p-12 terminal-border-violet bg-card mb-12">
+        <section className="min-h-screen pt-32 pb-24 px-4 max-w-6xl mx-auto animate-glitch">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold font-mono violet-text tracking-widest uppercase mb-4">
+              // DOSSIER: RESEARCH_VAULT
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Access the encrypted archives of the Frontiers of Analysis. Interweaving ancient Gnostic logic with modern systemic surveillance.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            {/* File A */}
+            <div className="terminal-border bg-card p-6 flex flex-col grayscale hover:grayscale-0 transition-all duration-500">
+               <div className="mb-4 text-[10px] font-mono text-muted-foreground">FILE_ID: ATOMIC_FRONTIER_X</div>
+               <h3 className="font-bold uppercase text-foreground mb-4">The T-Metal Anomaly</h3>
+               <p className="text-xs text-muted-foreground leading-relaxed flex-1 mb-6">
+                 Detailed analysis of the Philosopher's Stone through the lens of transition metals (Gold, Silver, Platinum) in a non-metallic, monoatomic state.
+               </p>
+               <div className="border-t border-border pt-4 flex justify-between items-center">
+                 <span className="text-[10px] font-mono text-destructive uppercase">[ ENCRYPTED ]</span>
+                 <span className="text-[10px] font-mono text-muted-foreground italic">Clearance: ARCHITECT</span>
+               </div>
+            </div>
+
+            {/* File B */}
+            <div className="terminal-border bg-card p-6 flex flex-col grayscale hover:grayscale-0 transition-all duration-500">
+               <div className="mb-4 text-[10px] font-mono text-muted-foreground">FILE_ID: BIO_ACOUSTIC_B</div>
+               <h3 className="font-bold uppercase text-foreground mb-4">The Shattering Glass Effect</h3>
+               <p className="text-xs text-muted-foreground leading-relaxed flex-1 mb-6">
+                 Utilizing Helmholtz Resonance and Nitric Oxide pathways to neutralize Archonic interference in the human bio-field.
+               </p>
+               <div className="border-t border-border pt-4 flex justify-between items-center">
+                 <span className="text-[10px] font-mono text-destructive uppercase">[ ENCRYPTED ]</span>
+                 <span className="text-[10px] font-mono text-muted-foreground italic">Clearance: ARCHITECT</span>
+               </div>
+            </div>
+
+            {/* File C */}
+            <div className="terminal-border bg-card p-6 flex flex-col grayscale hover:grayscale-0 transition-all duration-500 border-primary/20">
+               <div className="mb-4 text-[10px] font-mono text-muted-foreground">FILE_ID: ENV_SURVEILLANCE_C</div>
+               <h3 className="font-bold uppercase text-foreground mb-4">The FUSRAP Mapping</h3>
+               <p className="text-xs text-muted-foreground leading-relaxed flex-1 mb-6">
+                 Legacy surveillance of the Manhattan Project radioactive contamination vectors in the St. Louis datasphere.
+               </p>
+               <div className="border-t border-border pt-4 flex justify-between items-center">
+                 <span className="text-[10px] font-mono text-primary uppercase">[ PUBLIC_SUMMARY ]</span>
+                 <span className="text-[10px] font-mono text-muted-foreground italic">Clearance: OPEN</span>
+               </div>
+            </div>
+          </div>
+
+          <div className="mb-16">
+            <FeaturesSection />
+          </div>
+
+          <div className="text-center p-12 terminal-border-violet bg-card mb-12 relative overflow-hidden">
+             <div className="absolute inset-0 pointer-events-none opacity-5 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(167,139,250,0.1)_2px,rgba(167,139,250,0.1)_4px)]" />
              <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest mb-6">
-               [ WARNING: ASSET_ENCRYPTION_ACTIVE ]
+               [ WARNING: NODE_ENCRYPTION_ACTIVE ]
              </p>
              <p className="max-w-2xl mx-auto text-foreground mb-8">
-               Accessing the Frontiers of Analysis requires Architect-level clearance. 
-               The Pleroma architecture research dossiers are currently restricted to authorized nodes.
+               Accessing the deep research vault requires **Architect-level clearance**. 
+               The Pleroma architecture dossiers are currently restricted to authorized nodes to prevent frequency corruption.
              </p>
              <button 
                onClick={() => {
                  const pricingEl = document.getElementById('pricing');
                  if (pricingEl) pricingEl.scrollIntoView({ behavior: 'smooth' });
                }}
-               className="px-8 py-3 border border-violet-500 text-violet-400 font-mono text-xs tracking-widest uppercase hover:bg-violet-500 hover:text-white transition-all"
+               className="px-8 py-3 border border-violet-500 text-violet-400 font-mono text-xs tracking-widest uppercase hover:bg-violet-500 hover:text-white transition-all shadow-[0_0_15px_rgba(139,92,246,0.2)] hover:shadow-[0_0_25px_rgba(139,92,246,0.4)]"
              >
-               [ Request Clearance ]
+               [ Request Architect Clearance ]
              </button>
           </div>
+          
           <PricingSection />
         </section>
       )}
