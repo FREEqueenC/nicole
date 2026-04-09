@@ -1,0 +1,49 @@
+backend/main.py
+  5ce89573fb7d74ab 3,5,15-16,18-20,22,24-31,125
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.6",
+  "base_commit_sha": "beff1dc067df68cca02c75ae38b4b85acc013573",
+  "prompts": {
+    "05468573efeb9159": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "6b825275-c912-4426-99c3-e29132e576ea",
+        "model": "gemini-3-flash-preview"
+      },
+      "human_author": "Ashleigh Walker",
+      "messages": [],
+      "total_additions": 157,
+      "total_deletions": 13,
+      "accepted_lines": 151,
+      "overriden_lines": 0
+    },
+    "5ce89573fb7d74ab": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "e4df687d-88c2-4caf-aba3-736c9c16a9b5",
+        "model": "gemini-3-flash-preview"
+      },
+      "human_author": "Ashleigh Walker",
+      "messages": [],
+      "total_additions": 21,
+      "total_deletions": 2,
+      "accepted_lines": 17,
+      "overriden_lines": 0
+    },
+    "7f9f9522c3c79238": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "2638c0cf-2046-47fa-a681-75c46bcc26ba",
+        "model": "gemini-3-flash-preview"
+      },
+      "human_author": "Ashleigh Walker",
+      "messages": [],
+      "total_additions": 86,
+      "total_deletions": 6,
+      "accepted_lines": 86,
+      "overriden_lines": 0
+    }
+  }
+}
