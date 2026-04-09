@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
   Container, Typography, Button, TextField, Card, CardContent, CardActions,
-  Grid, Box, AppBar, Toolbar, Drawer, List, ListItem, ListItemText, ListItemIcon, CssBaseline
+  Grid, Box, AppBar, Toolbar, Drawer, List, ListItem, ListItemText, ListItemIcon, CssBaseline,
+  Snackbar, Alert
 } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Poll as PollIcon, Add as AddIcon } from '@mui/icons-material';
@@ -69,17 +70,26 @@ function CreatePollForm({ handleCreatePoll, newQuestion, setNewQuestion, newOpti
   );
 }
 
-
 function App() {
   const [polls, setPolls] = useState([]);
   const [newQuestion, setNewQuestion] = useState('');
   const [newOptions, setNewOptions] = useState(['', '']);
   const [selectedMenu, setSelectedMenu] = useState('active_polls');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleError = (error) => {
+    console.error(error);
+    setErrorMsg(error.message || 'An unexpected error occurred.');
+  };
 
   useEffect(() => {
     fetch('/api/polls')
-      .then(res => res.json())
-      .then(data => setPolls(data));
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch polls');
+        return res.json();
+      })
+      .then(data => setPolls(data))
+      .catch(handleError);
   }, []);
 
   const handleVote = (pollId, option) => {
@@ -87,30 +97,52 @@ function App() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ option })
-    }).then(() => {
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Failed to cast vote');
+      return res.json();
+    })
+    .then(() => {
       // Refresh results
       fetch(`/api/polls/${pollId}/results`)
-        .then(res => res.json())
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to fetch results');
+          return res.json();
+        })
         .then(data => {
           setPolls(polls.map(p => p.id === pollId ? { ...p, results: data } : p));
-        });
-    });
+        })
+        .catch(handleError);
+    })
+    .catch(handleError);
   };
 
   const handleCreatePoll = () => {
+    if (!newQuestion || newOptions.filter(o => o).length < 2) {
+      setErrorMsg('Question and at least two options are required.');
+      return;
+    }
+
     fetch('/api/polls', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ question: newQuestion, options: newOptions.filter(o => o) })
-    }).then(() => {
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Failed to create poll');
+      return res.json();
+    })
+    .then(() => {
       // Refresh polls
       fetch('/api/polls')
         .then(res => res.json())
-        .then(data => setPolls(data));
+        .then(data => setPolls(data))
+        .catch(handleError);
       setNewQuestion('');
       setNewOptions(['', '']);
       setSelectedMenu('active_polls');
-    });
+    })
+    .catch(handleError);
   };
 
   const handleOptionChange = (index, value) => {
@@ -213,6 +245,17 @@ function App() {
           )}
         </Box>
       </Box>
+      
+      <Snackbar 
+        open={!!errorMsg} 
+        autoHideDuration={6000} 
+        onClose={() => setErrorMsg('')}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={() => setErrorMsg('')} severity="error" sx={{ width: '100%' }}>
+          {errorMsg}
+        </Alert>
+      </Snackbar>
     </ThemeProvider>
   );
 }

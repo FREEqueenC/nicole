@@ -1,6 +1,8 @@
 import logging
 import os
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request, Depends
+from fastapi.responses import JSONResponse
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 from google.cloud.sql.connector import Connector
@@ -8,12 +10,43 @@ import pg8000
 import sqlalchemy
 from pydantic import BaseModel
 from typing import List
+from pythonjsonlogger import jsonlogger
+
+import firebase_admin
+from firebase_admin import credentials, auth as firebase_auth
+
+# Initialize Firebase Admin SDK (uses default GCP credentials in Cloud Run)
+if not firebase_admin._apps:
+    firebase_admin.initialize_app()
+
+security = HTTPBearer()
+
+def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    token = credentials.credentials
+    try:
+        decoded_token = firebase_auth.verify_id_token(token)
+        return decoded_token
+    except Exception as e:
+        logger.error(f"Token verification failed: {e}")
+        raise HTTPException(status_code=401, detail="Invalid authentication credentials")
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+logHandler = logging.StreamHandler()
+formatter = jsonlogger.JsonFormatter('%(asctime)s %(levelname)s %(name)s %(message)s')
+logHandler.setFormatter(formatter)
+logger.addHandler(logHandler)
 
 app = FastAPI()
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    logger.exception(f"Unhandled exception: {exc}", extra={"path": request.url.path})
+    return JSONResponse(
+        status_code=500,
+        content={"message": "An unexpected error occurred. Please try again later."},
+    )
 
 
 def connect_with_connector() -> sqlalchemy.engine.base.Engine:
@@ -54,6 +87,7 @@ def connect_with_connector() -> sqlalchemy.engine.base.Engine:
     pool = sqlalchemy.create_engine(
         "postgresql+pg8000://",
         creator=getconn,
+        pool_pre_ping=True,
     )
     return pool
 
@@ -88,7 +122,7 @@ def get_polls():
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/polls")
-def create_poll(poll: PollCreate):
+def create_poll(poll: PollCreate, user=Depends(verify_token)):
     if not poll.question or not poll.options or len(poll.options) < 2:
         raise HTTPException(status_code=400, detail="Question and at least two options are required.")
 
