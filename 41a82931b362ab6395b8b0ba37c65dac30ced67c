@@ -1,0 +1,36 @@
+nicole-market-report/src/main.tsx
+  7f9f9522c3c79238 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.6",
+  "base_commit_sha": "41a82931b362ab6395b8b0ba37c65dac30ced67c",
+  "prompts": {
+    "05468573efeb9159": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "6b825275-c912-4426-99c3-e29132e576ea",
+        "model": "gemini-3-flash-preview"
+      },
+      "human_author": "Ashleigh Walker",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 151,
+      "overriden_lines": 0
+    },
+    "7f9f9522c3c79238": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "2638c0cf-2046-47fa-a681-75c46bcc26ba",
+        "model": "gemini-3-flash-preview"
+      },
+      "human_author": "Ashleigh Walker",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 87,
+      "overriden_lines": 0
+    }
+  }
+}
