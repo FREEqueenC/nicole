@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, Shield, Zap, TrendingUp, AlertCircle, Cpu, Radio, ChevronRight, CheckCircle2, Lock } from 'lucide-react';
+import { Terminal, Shield, Zap, TrendingUp, AlertCircle, Cpu, Radio, ChevronRight, CheckCircle2, Lock, Archive } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Logo from '@/components/Logo';
+import Vault from '@/components/vault/Vault';
 
 const SuccessView = () => (
   <div className="min-h-screen bg-[#020617] text-slate-100 p-4 md:p-8 font-mono flex items-center justify-center relative overflow-hidden">
@@ -50,6 +51,7 @@ const MarketReport = () => {
   const [isSuccess, setIsSuccess] = useState(window.location.pathname === '/terminal-granted');
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [view, setView] = useState<'terminal' | 'vault'>('terminal');
   
   const fullText = "SOPHIA_V3_LINK: ESTABLISHED. FREQUENCY_SYNC: 99.8%. SCANNING_KENOMA...";
 
@@ -101,6 +103,7 @@ const MarketReport = () => {
   }, []);
 
   if (isSuccess) return <SuccessView />;
+  if (view === 'vault') return <Vault onReturn={() => setView('terminal')} />;
 
   return (
     <div className="min-h-screen bg-[#020617] text-slate-100 p-4 md:p-8 font-mono selection:bg-cyan-500 selection:text-white">
@@ -121,7 +124,15 @@ const MarketReport = () => {
             </p>
           </div>
           <div className="flex gap-2">
-            <Badge variant="outline" className="bg-slate-900 border-cyan-500/50 text-cyan-400">CLASS_3_SENSITIVE</Badge>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="bg-slate-900 border-cyan-500/50 text-cyan-400 flex items-center gap-2 hover:bg-cyan-500/10"
+              onClick={() => setView('vault')}
+            >
+              <Archive className="w-4 h-4" />
+              RESEARCH_VAULT
+            </Button>
             <Badge variant="outline" className="bg-slate-900 border-amber-500/50 text-amber-500">ANOMALY_DETECTED</Badge>
           </div>
         </div>
