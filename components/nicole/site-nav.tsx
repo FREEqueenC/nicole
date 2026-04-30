@@ -1,7 +1,6 @@
-"use client"
-
 import { Terminal, Menu, X } from "lucide-react"
 import { useState } from "react"
+import { useRouter, usePathname } from "next/navigation"
 
 interface SiteNavProps {
   activeView: string
@@ -10,12 +9,26 @@ interface SiteNavProps {
 
 export function SiteNav({ activeView, setActiveView }: SiteNavProps) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
 
   const navLinks = [
     { label: "MISSION_LOG", view: "MISSION_LOG" },
     { label: "MARKET_DECRYPTION", view: "MARKET_DECRYPTION" },
     { label: "RESEARCH_VAULT", view: "RESEARCH_VAULT" },
   ]
+
+  const handleNavClick = (view: string) => {
+    if (view === "RESEARCH_VAULT") {
+      router.push("/vault")
+    } else {
+      if (pathname !== "/") {
+        router.push("/")
+      }
+      setActiveView(view)
+    }
+    setMenuOpen(false)
+  }
 
   return (
     <nav
@@ -25,7 +38,7 @@ export function SiteNav({ activeView, setActiveView }: SiteNavProps) {
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
         {/* Logo */}
         <button 
-          onClick={() => setActiveView("MISSION_LOG")}
+          onClick={() => handleNavClick("MISSION_LOG")}
           className="flex items-center gap-2 font-mono text-sm font-bold tracking-widest neon-text uppercase hover:opacity-80 transition-opacity"
         >
           <Terminal className="w-4 h-4" />
@@ -37,7 +50,7 @@ export function SiteNav({ activeView, setActiveView }: SiteNavProps) {
           {navLinks.map((link) => (
             <button
               key={link.view}
-              onClick={() => setActiveView(link.view)}
+              onClick={() => handleNavClick(link.view)}
               className={`hover:text-primary transition-colors ${
                 activeView === link.view ? "text-primary border-b border-primary" : ""
               }`}
@@ -76,10 +89,7 @@ export function SiteNav({ activeView, setActiveView }: SiteNavProps) {
           {navLinks.map((link) => (
             <button
               key={link.view}
-              onClick={() => {
-                setActiveView(link.view);
-                setMenuOpen(false);
-              }}
+              onClick={() => handleNavClick(link.view)}
               className={`block w-full text-left py-2 transition-colors ${
                 activeView === link.view ? "text-primary font-bold" : "text-muted-foreground hover:text-primary"
               }`}
