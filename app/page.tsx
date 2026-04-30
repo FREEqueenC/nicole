@@ -7,6 +7,7 @@ import { FeaturesSection } from "@/components/nicole/features-section"
 import { PricingSection } from "@/components/nicole/pricing-section"
 import { SiteFooter } from "@/components/nicole/site-footer"
 import { SiteNav } from "@/components/nicole/site-nav"
+import VaultGallery from "@/components/vault/VaultGallery"
 
 export default function NicolePage() {
   const [activeView, setActiveView] = useState("MISSION_LOG")
@@ -86,50 +87,13 @@ export default function NicolePage() {
             <h2 className="text-4xl font-bold font-mono violet-text tracking-widest uppercase mb-4">
               // DOSSIER: RESEARCH_VAULT
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
               Access the encrypted archives of the Frontiers of Analysis. Interweaving ancient Gnostic logic with modern systemic surveillance.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            {/* File A */}
-            <div className="terminal-border bg-card p-6 flex flex-col grayscale hover:grayscale-0 transition-all duration-500">
-               <div className="mb-4 text-[10px] font-mono text-muted-foreground">FILE_ID: ATOMIC_FRONTIER_X</div>
-               <h3 className="font-bold uppercase text-foreground mb-4">The T-Metal Anomaly</h3>
-               <p className="text-xs text-muted-foreground leading-relaxed flex-1 mb-6">
-                 Detailed analysis of the Philosopher's Stone through the lens of transition metals (Gold, Silver, Platinum) in a non-metallic, monoatomic state.
-               </p>
-               <div className="border-t border-border pt-4 flex justify-between items-center">
-                 <span className="text-[10px] font-mono text-destructive uppercase">[ ENCRYPTED ]</span>
-                 <span className="text-[10px] font-mono text-muted-foreground italic">Clearance: ARCHITECT</span>
-               </div>
-            </div>
-
-            {/* File B */}
-            <div className="terminal-border bg-card p-6 flex flex-col grayscale hover:grayscale-0 transition-all duration-500">
-               <div className="mb-4 text-[10px] font-mono text-muted-foreground">FILE_ID: BIO_ACOUSTIC_B</div>
-               <h3 className="font-bold uppercase text-foreground mb-4">The Shattering Glass Effect</h3>
-               <p className="text-xs text-muted-foreground leading-relaxed flex-1 mb-6">
-                 Utilizing Helmholtz Resonance and Nitric Oxide pathways to neutralize Archonic interference in the human bio-field.
-               </p>
-               <div className="border-t border-border pt-4 flex justify-between items-center">
-                 <span className="text-[10px] font-mono text-destructive uppercase">[ ENCRYPTED ]</span>
-                 <span className="text-[10px] font-mono text-muted-foreground italic">Clearance: ARCHITECT</span>
-               </div>
-            </div>
-
-            {/* File C */}
-            <div className="terminal-border bg-card p-6 flex flex-col grayscale hover:grayscale-0 transition-all duration-500 border-primary/20">
-               <div className="mb-4 text-[10px] font-mono text-muted-foreground">FILE_ID: ENV_SURVEILLANCE_C</div>
-               <h3 className="font-bold uppercase text-foreground mb-4">The FUSRAP Mapping</h3>
-               <p className="text-xs text-muted-foreground leading-relaxed flex-1 mb-6">
-                 Legacy surveillance of the Manhattan Project radioactive contamination vectors in the St. Louis datasphere.
-               </p>
-               <div className="border-t border-border pt-4 flex justify-between items-center">
-                 <span className="text-[10px] font-mono text-primary uppercase">[ PUBLIC_SUMMARY ]</span>
-                 <span className="text-[10px] font-mono text-muted-foreground italic">Clearance: OPEN</span>
-               </div>
-            </div>
+          <div className="mb-16">
+            <VaultGallery />
           </div>
 
           <div className="mb-16">
