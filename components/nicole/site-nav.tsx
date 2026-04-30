@@ -73,12 +73,31 @@ export function SiteNav({ activeView, setActiveView }: SiteNavProps) {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-md px-4 py-6 space-y-4 font-mono text-xs tracking-widest uppercase">
-          <a href="#" className="block text-muted-foreground hover:text-primary transition-colors py-2">Protocol</a>
+          {navLinks.map((link) => (
+            <button
+              key={link.view}
+              onClick={() => {
+                setActiveView(link.view);
+                setMenuOpen(false);
+              }}
+              className={`block w-full text-left py-2 transition-colors ${
+                activeView === link.view ? "text-primary font-bold" : "text-muted-foreground hover:text-primary"
+              }`}
+            >
+              {link.label}
+            </button>
+          ))}
           <a href="#pricing" className="block text-muted-foreground hover:text-primary transition-colors py-2" onClick={() => setMenuOpen(false)}>Access Tiers</a>
-          <a href="#" className="block text-muted-foreground hover:text-primary transition-colors py-2">Transmission</a>
-          <a href="#" className="block border border-primary/40 text-primary px-4 py-3 text-center hover:bg-primary hover:text-primary-foreground transition-all duration-200 mt-4">
+          <button
+            onClick={() => {
+              const pricingEl = document.getElementById('pricing');
+              if (pricingEl) pricingEl.scrollIntoView({ behavior: 'smooth' });
+              setMenuOpen(false);
+            }}
+            className="block w-full border border-primary/40 text-primary px-4 py-3 text-center hover:bg-primary hover:text-primary-foreground transition-all duration-200 mt-4"
+          >
             [ Request Access ]
-          </a>
+          </button>
         </div>
       )}
     </nav>

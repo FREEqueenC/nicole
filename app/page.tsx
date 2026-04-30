@@ -39,7 +39,8 @@ export default function NicolePage() {
             <div className="terminal-border p-4 bg-card font-mono text-[10px] text-primary">
                [ STATUS: SCANNING_S-ORME_STATE ] <br/>
                [ CLARITY: 97.3% ] <br/>
-               [ NOISE_FLOOR: -114dB ]
+               [ NOISE_FLOOR: -114dB ] <br/>
+               [ BUILD: SOVEREIGN_VAULT_B1 ]
             </div>
           </div>
 
