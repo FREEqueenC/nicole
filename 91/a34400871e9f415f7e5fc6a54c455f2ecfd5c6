@@ -1,0 +1,29 @@
+components/vault/MeissnerCore.tsx
+  4aec444b05d4c59b 1-86
+app/page.tsx
+  4aec444b05d4c59b 10,90,95-96
+components/vault/Treasury52.tsx
+  4aec444b05d4c59b 1-58
+components/vault/VaultGallery.tsx
+  4aec444b05d4c59b 1-89
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "91a34400871e9f415f7e5fc6a54c455f2ecfd5c6",
+  "prompts": {
+    "4aec444b05d4c59b": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "58be665f-a321-43b2-b7a5-31ae8c8af7c7",
+        "model": "unknown"
+      },
+      "human_author": "Ashleigh Walker",
+      "messages": [],
+      "total_additions": 237,
+      "total_deletions": 40,
+      "accepted_lines": 363,
+      "overriden_lines": 0
+    }
+  }
+}
