@@ -1,0 +1,25 @@
+app/page.tsx
+  4aec444b05d4c59b 42-43
+components/nicole/site-nav.tsx
+  4aec444b05d4c59b 76-89,91-98,100
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "bc98661736ae4fd2fb2332ff4577d18ca79dfa6f",
+  "prompts": {
+    "4aec444b05d4c59b": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "58be665f-a321-43b2-b7a5-31ae8c8af7c7",
+        "model": "unknown"
+      },
+      "human_author": "Ashleigh Walker",
+      "messages": [],
+      "total_additions": 25,
+      "total_deletions": 5,
+      "accepted_lines": 236,
+      "overriden_lines": 0
+    }
+  }
+}
