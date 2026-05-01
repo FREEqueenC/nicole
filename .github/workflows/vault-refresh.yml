@@ -1,0 +1,36 @@
+name: Vault Intelligence Refresh
+
+on:
+  schedule:
+    - cron: '0 */12 * * *' # Every 12 hours
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  refresh-vault:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout NICOLE Vision
+        uses: actions/checkout@v4
+        with:
+          repository: FREEqueenC/nicole
+          path: nicole-repo
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: |
+          cd nicole-repo/nicole-vision
+          npm install
+
+      - name: Execute Intelligence Mission
+        env:
+          BROWSERBASE_API_KEY: ${{ secrets.BROWSERBASE_API_KEY }}
+          BROWSERBASE_PROJECT_ID: ${{ secrets.BROWSERBASE_PROJECT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          VAULT_UPDATE_SECRET: ${{ secrets.VAULT_UPDATE_SECRET }}
+        run: |
+          cd nicole-repo/nicole-vision
+          npx tsx browser_agent.ts

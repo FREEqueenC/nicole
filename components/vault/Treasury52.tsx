@@ -1,8 +1,15 @@
 "use client"
 
+import { useEffect, useState } from "react";
+
 const Treasury52 = () => {
+  const [data, setData] = useState<any>(null);
   const squares = [1, 2, 3, 4]; // Four nested squares
   const copticKeys = ["PEYPA", "NZWA", "IWYI", "IEOU"];
+
+  useEffect(() => {
+    fetch("/api/vault").then(res => res.json()).then(setData).catch(() => {});
+  }, []);
   
   return (
     <div className="flex flex-col items-center justify-center min-h-[500px] bg-black text-cyan-400 font-mono overflow-hidden rounded-xl border border-cyan-500/20">
@@ -38,22 +45,22 @@ const Treasury52 = () => {
            <div className="text-cyan-200 border-b border-cyan-500/30 pb-1 font-bold">ICCH_STAKING_LIVE</div>
            <div className="flex justify-between gap-4">
              <span>Base_APR:</span>
-             <span className="text-white">10.0%</span>
+             <span className="text-white">{data?.economics?.base_apr || "10.0%"}</span>
            </div>
            <div className="space-y-1 opacity-80">
              <div className="text-[7px] text-cyan-500/60">Node_Bonuses:</div>
-             <div className="flex justify-between">
-               <span>1-5 Nodes:</span>
-               <span className="text-emerald-400">+2%</span>
-             </div>
-             <div className="flex justify-between">
-               <span>6-10 Nodes:</span>
-               <span className="text-emerald-400">+5%</span>
-             </div>
-             <div className="flex justify-between">
-               <span>10+ Nodes:</span>
-               <span className="text-emerald-400">+10%</span>
-             </div>
+             {data?.economics?.bonus_tiers?.map((tier: string, i: number) => (
+               <div key={i} className="flex justify-between gap-2">
+                 <span className="truncate max-w-[100px]">{tier.split('receive')[0].replace('Operators running', '').trim()}</span>
+                 <span className="text-emerald-400">+{tier.split('receive')[1]?.trim().split(' ')[0] || "..."}</span>
+               </div>
+             )) || (
+               <>
+                 <div className="flex justify-between"><span>1-5 Nodes:</span><span className="text-emerald-400">+2%</span></div>
+                 <div className="flex justify-between"><span>6-10 Nodes:</span><span className="text-emerald-400">+5%</span></div>
+                 <div className="flex justify-between"><span>10+ Nodes:</span><span className="text-emerald-400">+10%</span></div>
+               </>
+             )}
            </div>
         </div>
       </div>
