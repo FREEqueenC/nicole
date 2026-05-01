@@ -1,0 +1,27 @@
+components/vault/Treasury52.tsx
+  4aec444b05d4c59b 35-58
+components/vault/VaultGallery.tsx
+  4aec444b05d4c59b 6,24-29
+components/vault/ConstellationMap.tsx
+  4aec444b05d4c59b 1-86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "edcd1bad0a6129023025b905cf19d0abaee6f101",
+  "prompts": {
+    "4aec444b05d4c59b": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "58be665f-a321-43b2-b7a5-31ae8c8af7c7",
+        "model": "unknown"
+      },
+      "human_author": "Ashleigh Walker",
+      "messages": [],
+      "total_additions": 117,
+      "total_deletions": 0,
+      "accepted_lines": 264,
+      "overriden_lines": 0
+    }
+  }
+}
