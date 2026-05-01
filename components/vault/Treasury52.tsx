@@ -32,6 +32,30 @@ const Treasury52 = () => {
             <span key={i} className="drop-shadow-[0_0_10px_#00FFCC]">{key}</span>
           ))}
         </div>
+
+        {/* Live Economic Feed Overlay */}
+        <div className="absolute top-0 right-0 p-4 border border-cyan-500/20 bg-black/40 backdrop-blur-md rounded text-[8px] uppercase tracking-[0.2em] space-y-2 hidden md:block">
+           <div className="text-cyan-200 border-b border-cyan-500/30 pb-1 font-bold">ICCH_STAKING_LIVE</div>
+           <div className="flex justify-between gap-4">
+             <span>Base_APR:</span>
+             <span className="text-white">10.0%</span>
+           </div>
+           <div className="space-y-1 opacity-80">
+             <div className="text-[7px] text-cyan-500/60">Node_Bonuses:</div>
+             <div className="flex justify-between">
+               <span>1-5 Nodes:</span>
+               <span className="text-emerald-400">+2%</span>
+             </div>
+             <div className="flex justify-between">
+               <span>6-10 Nodes:</span>
+               <span className="text-emerald-400">+5%</span>
+             </div>
+             <div className="flex justify-between">
+               <span>10+ Nodes:</span>
+               <span className="text-emerald-400">+10%</span>
+             </div>
+           </div>
+        </div>
       </div>
 
       <div className="pb-8 flex flex-col items-center">

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import MeissnerCore from './MeissnerCore';
 import Treasury52 from './Treasury52';
+import ConstellationMap from './ConstellationMap';
 import { ChevronLeft, ChevronRight, Archive, Shield } from 'lucide-react';
 
 const VaultGallery = () => {
@@ -20,6 +21,12 @@ const VaultGallery = () => {
       title: "02_TREASURY_52", 
       component: <Treasury52 />,
       description: "Cryptographic firewall for the Quantum Financial System. Bypassing SWIFT/Atlas legacy PKI."
+    },
+    { 
+      id: "e83d90e6-s3", 
+      title: "03_LIVE_CONSTELLATION_MAP", 
+      component: <ConstellationMap />,
+      description: "Real-time tracking of the CTC-0 and CTC-1 satellite cluster. Verification of 'Proof of Location' coordination layers."
     }
   ];
 
