@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="neonGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
+  
+  <!-- Border glow -->
+  <rect x="1" y="1" width="30" height="30" rx="5" fill="none" stroke="url(#neonGreen)" stroke-width="1" opacity="0.4"/>
+  
+  <!-- N letterform - simplified for small size -->
+  <path 
+    d="M9,24 L9,8 L12,8 L12,16 L20,8 L23,8 L23,24 L20,24 L20,16 L12,24 Z" 
+    fill="url(#neonGreen)"
+  />
+  
+  <!-- Corner indicator -->
+  <circle cx="26" cy="6" r="2" fill="#8b5cf6"/>
+</svg>
