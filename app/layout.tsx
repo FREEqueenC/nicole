@@ -37,6 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <meta name="talentapp:project_verification" content="1eb5bf52f7e6ec739c71d6a2c38526cbe404fcb4360c42acb04201bf6d37d374c3e1d3d39106b6ef1bdd37e0832cd140700384be7cc146f9822b341fd1efd503" />
+      </head>
       <body className={`${geist.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         {children}
         <Analytics />
