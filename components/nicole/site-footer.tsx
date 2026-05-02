@@ -54,6 +54,13 @@ export function SiteFooter() {
           </a>
           <span className="hidden md:inline text-border">|</span>
           <a
+            href="/about"
+            className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground hover:text-primary transition-colors tracking-wider uppercase"
+          >
+            ABOUT
+          </a>
+          <span className="text-border">|</span>
+          <a
             href="/privacy"
             className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground hover:text-primary transition-colors tracking-wider uppercase"
           >

@@ -16,11 +16,14 @@ export function SiteNav({ activeView, setActiveView }: SiteNavProps) {
     { label: "MISSION_LOG", view: "MISSION_LOG" },
     { label: "MARKET_DECRYPTION", view: "MARKET_DECRYPTION" },
     { label: "RESEARCH_VAULT", view: "RESEARCH_VAULT" },
+    { label: "ABOUT", view: "ABOUT" },
   ]
 
   const handleNavClick = (view: string) => {
     if (view === "RESEARCH_VAULT") {
       router.push("/vault")
+    } else if (view === "ABOUT") {
+      router.push("/about")
     } else {
       if (pathname !== "/") {
         router.push("/")
