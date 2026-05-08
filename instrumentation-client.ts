@@ -17,6 +17,30 @@ Sentry.init({
   integrations: [
     Sentry.replayIntegration(),
   ],
+
+  beforeSend(event) {
+    // Ignore errors originating from browser extension scripts (e.g. MetaMask inpage.js).
+    // These are third-party extension failures outside the application's control.
+    const frames = event.exception?.values?.flatMap(
+      (v) => v.stacktrace?.frames ?? []
+    ) ?? [];
+    const fromExtension = frames.some((f) =>
+      f.filename?.startsWith("chrome-extension://") ||
+      f.filename?.startsWith("moz-extension://")
+    );
+    if (fromExtension) return null;
+
+    // Also drop known MetaMask session-restore errors by message.
+    const messages = event.exception?.values?.map((v) => v.value ?? "") ?? [];
+    const isMetaMaskError = messages.some(
+      (m) =>
+        m.includes("MetaMask extension not found") ||
+        m.includes("Failed to connect to MetaMask")
+    );
+    if (isMetaMaskError) return null;
+
+    return event;
+  },
 });
 
 // Hook into App Router navigation transitions
