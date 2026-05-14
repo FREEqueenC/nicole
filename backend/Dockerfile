@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY main.py .
 
 # Make port 8080 available to the world outside this container
-EXPOSE 8080
+EXPOSE 3001
 
 # Run main.py when the container launches
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}"]
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-3001}"]
