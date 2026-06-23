@@ -10,7 +10,7 @@ const ConstellationMap = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/api/vault");
+        const res = await fetch("/api/vault.json");
         const json = await res.json();
         setData(json);
       } catch (e) {

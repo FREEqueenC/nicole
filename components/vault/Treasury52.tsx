@@ -8,7 +8,7 @@ const Treasury52 = () => {
   const copticKeys = ["PEYPA", "NZWA", "IWYI", "IEOU"];
 
   useEffect(() => {
-    fetch("/api/vault").then(res => res.json()).then(setData).catch(() => {});
+    fetch("/api/vault.json").then(res => res.json()).then(setData).catch(() => {});
   }, []);
   
   return (
