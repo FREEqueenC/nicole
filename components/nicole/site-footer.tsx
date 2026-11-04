@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Twitter, ExternalLink } from "lucide-react"
 
 export function SiteFooter() {
@@ -53,12 +54,12 @@ export function SiteFooter() {
             DISCLOSURE_PROJECT
           </a>
           <span className="hidden md:inline text-border">|</span>
-          <a
+          <Link
             href="/privacy"
             className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground hover:text-primary transition-colors tracking-wider uppercase"
           >
             PRIVACY_PROTOCOL
-          </a>
+          </Link>
           <span className="text-border">|</span>
           <a
             href="https://twitter.com/Ashleigh11911"

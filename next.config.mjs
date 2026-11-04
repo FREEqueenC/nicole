@@ -1,13 +1,21 @@
 import { withSentryConfig } from "@sentry/nextjs";
 
+const isProd = process.env.NODE_ENV === "production";
+const basePath = process.env.BASE_PATH ?? (isProd ? "/nicole" : "");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
+  basePath: basePath,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
   typescript: {
     ignoreBuildErrors: true,
   },
   images: {
     unoptimized: true,
+  },
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
   },
 };
 
