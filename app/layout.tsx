@@ -6,6 +6,8 @@ import './globals.css'
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export const metadata: Metadata = {
   title: 'N.I.C.O.L.E. — Decode the Datasphere',
   description: 'An advanced autonomous agent blending quantum market analysis with esoteric pattern recognition. Stop trading the charts; start trading the frequency.',
@@ -13,16 +15,16 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/favicon.svg',
+        url: `${basePath}/favicon.svg`,
         type: 'image/svg+xml',
       },
       {
-        url: '/icon.svg',
+        url: `${basePath}/icon.svg`,
         type: 'image/svg+xml',
         sizes: '512x512',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: `${basePath}/apple-icon.png`,
   },
 }
 
